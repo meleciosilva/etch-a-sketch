@@ -16,12 +16,27 @@ function handleResize() {
   const size = prompt("Select a grid size (1-64)");
   container.innerHTML = "";
   createGrid(size);
+  colorGrid();
 }
 
 function resizeGrid() {
   resizeButton.addEventListener("click", handleResize);
 }
 
+function colorGrid() {
+  const allGridBoxes = document.querySelectorAll(".grid");
+  for (let box of allGridBoxes) {
+    box.addEventListener(("mouseover"), () => {
+      let randomColor = Math.floor(Math.random()*16777215).toString(16);
+      box.style.backgroundColor = `#${randomColor}`;
+    });
+  }
+}
 
-createGrid(16);
-resizeGrid();
+function main() {
+  createGrid(16);
+  resizeGrid();
+  colorGrid();
+}
+
+window.addEventListener('DOMContentLoaded', main);
