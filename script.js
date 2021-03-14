@@ -1,5 +1,5 @@
 const container = document.querySelector(".container");
-const resizeButton = document.querySelector("#resize");
+const rangeInput = document.querySelector("#myRange");
 
 function createGrid(size) {
   
@@ -13,14 +13,14 @@ function createGrid(size) {
 }
 
 function handleResize() {
-  const size = prompt("Select a grid size (1-64)");
+  const size = rangeInput.value;
   container.innerHTML = "";
   createGrid(size);
   colorGrid();
 }
 
 function resizeGrid() {
-  resizeButton.addEventListener("click", handleResize);
+  rangeInput.addEventListener("change", handleResize);
 }
 
 function colorGrid() {
@@ -32,6 +32,7 @@ function colorGrid() {
     });
   }
 }
+
 
 function main() {
   createGrid(16);
